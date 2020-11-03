@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'css/mystyle.css' %}">
+</head>
+<body>
+<a href="{% url 'first_app:form_name_view' %}">Form name view</a>
+<a href="{% url 'first_app:users' %}">Users Form</a>
+    <h1>Welcome</h1>
+    {% if access_records %}
+        <table class="djangotwo">
+            <thead>
+                <th>File Name</th>
+                <th>Date Accessed</th>
+            </thead>
+            {% for acc in access_records %}
+                <tr>
+                    <td>{{ acc.name }}</td>
+                    <td>{{ acc.date }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>No access data found</p>
+    {% endif %}
+    <h1>User List</h1>
+
+        {% if user_list %}
+
+            {% for user in user_list %}
+            <ul>
+                <li> {{ user.name }}</li>
+                <li> {{ user.email }}</li>
+            </ul>
+            {% endfor %}
+
+        {% else %}
+            <p>No user data found</p>
+        {% endif %}
+
+
+
+</body>
+</html>
